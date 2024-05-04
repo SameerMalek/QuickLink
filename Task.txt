@@ -1,0 +1,19 @@
+QuickLink: URL Shortner
+
+Designing a URL shortner service that takes in a vlaid URL and returns a shortened URL redirecting the user to the previously provided URL.
+
+Also, keep a track of total visits/clicks on the URL.
+
+Routes:
+
+POST /URL - Generates a new short URL and returns the shortened URL in the format example.com/random-id.
+
+GET /:id - Redirects user to original URL.
+
+GET /URL/analytics/:id - Returns clicks for provided short id.
+
+PUT /URL - Updates existing short URL with a new long URL.
+
+DELETE /URL/:id - Deletes the short URL record from database.
+
+ 
