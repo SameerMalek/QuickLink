@@ -17,7 +17,7 @@ app.use(express.urlencoded({extended:false}));
 app.use(cookieParser());
 app.use("/url",restrictToLoggedInUserOnly, urlRoute);//adding Inline Middleware.
 app.use("/user", userRoute);
-app.use("/",checkAuth,staticRoute);
+app.use("/",checkAuth,staticRoute);//adding Inline Middleware.
 
 // set the view engine to ejs
 app.set("view engine", "ejs");
