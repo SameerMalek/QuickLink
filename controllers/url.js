@@ -19,19 +19,28 @@ async function handleCreateShortUrl(req, res) {
 
 async function handleGetShortUrlsByShortID(req, res) {
   const shortId = req.params.shortId;
-  const entry = await URL.findOneAndUpdate(
-    {
-      shortId,
-    },
-    {
-      $push: {
-        visitHistory: {
-          timeStamp: Date.now(),
+  
+  try {
+    const entry = await URL.findOneAndUpdate(
+      { shortId },
+      {
+        $push: {
+          visitHistory: {
+            timeStamp: Date.now(),
+          },
         },
-      },
+      }
+    );
+    
+    if (!entry) {
+      return res.status(404).json({ error: 'Short URL not found' });
     }
-  );
-  res.redirect(entry.redirectURL);
+
+    res.redirect(entry.redirectURL);
+  } catch (error) {
+    console.error('Error retrieving short URL:', error);
+    res.status(500).json({ error: 'Server error' });
+  }
 }
 
 async function handleGetAnalytics(req, res) {

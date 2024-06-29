@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon index.js"
   },
-  "author": "",
+  "author": "Mohammad Sameer Malek",
   "license": "ISC",
   "dependencies": {
     "cookie-parser": "^1.4.6",
